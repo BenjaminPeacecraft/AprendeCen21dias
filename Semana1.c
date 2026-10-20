@@ -81,7 +81,7 @@ void get_data(void)
         }while ( year[ctr] < 0 || year[ctr] > 1994);
 
         printf("\nEnter Yearly Income (whole dollars): ");
-        scan("%ld", &income[ctr]);
+        scanf("%ld", &income[ctr]);
 
         cont = continue_function();
     }
@@ -102,6 +102,39 @@ void display_report()
     for( x = 0; x <= 12; x++)   /*Para cada mes. Incluyendo 0*/
     {
         month_total = 0;
-        for ( y = 0; )
+        for ( y = 0; y < ctr; y++)
+        {
+            if (month[y] == x)
+                month_total += income[y];
+        }
+        printf("\nTotal for mont %d is %ld", x, month_total);
+        grand_total += month_total;
     }
+    printf("\n\nReport totals: ");
+    printf("\nTotal Income is %ld", grand_total);
+    printf("\nAverage Income is %ld", grand_total/ctr);
+
+    printf("\n\n* * * End of Report * * * ");
+}
+
+/*Funcion: continue_function()
+Objetivo: Preguntar al usuario si quiere continuar
+Regresa: YES - si el usuario desea continuar
+        NO - si el usuario desea terminar*/
+
+int continue_function(void)
+{
+    printf("\n\nDo you wish to continue? (0 = NO / 1 = YES): ");
+    scanf("%d", &x);
+
+    while ( x < 0 || x > 1)
+    {
+        printf("\n%d is invalid!", x);
+        printf("\nPlease enter 0 to Quit or 1 to continue: ");
+        scanf("%d", &x);
+    }
+    if(x == 0)
+        return(NO);
+    else
+        return(YES);
 }
