@@ -60,6 +60,48 @@ void get_data(void)
     for(cont = YES, ctr = 0; ctr < MAX && cont == YES; ctr++)
     {
         printf("\n Enter information for Person %d.", ctr + 1);
+        printf("\n\tEnter Birthday: ");
         
+        do
+        {
+            printf("\n\tMonth (0 - 12): ");
+            scanf("%d", &month[ctr]);
+        }while (month[ctr] < 0 || month[ctr] > 12);
+
+        do
+        {
+            printf("\n\tDay (0 - 31): ");
+            scanf("%d", &day[ctr]);
+        }while (day[ctr] < 0 || day[ctr] > 31);
+
+        do
+        {
+            printf("\n\tYear (0 - 1994): ");
+            scanf("%d", &year[ctr]);
+        }while ( year[ctr] < 0 || year[ctr] > 1994);
+
+        printf("\nEnter Yearly Income (whole dollars): ");
+        scan("%ld", &income[ctr]);
+
+        cont = continue_function();
+    }
+
+    /* ctr es igual a la cantidad de gente que se ha tecleado.*/
+}
+
+/*Funcion display_report. Esta funcion despliega un reporte en la pantalla. Regresa: Nada. 
+Nota: Aun se puede imprimir mas informacion */
+
+void display_report()
+{
+    grand_total = 0;
+    printf("\n\n\n");
+    printf("\n      SALARY SUMMARY");
+    printf("\n      ==============");
+
+    for( x = 0; x <= 12; x++)   /*Para cada mes. Incluyendo 0*/
+    {
+        month_total = 0;
+        for ( y = 0; )
     }
 }
